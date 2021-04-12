@@ -1,0 +1,27 @@
+<h1>Please enter your room's details in inches</h1>
+<p>If you would like to add more than one room to your job, please just submit the room, and another form will appear.</p>
+<p>When you are done adding rooms just hit cancel</p>
+
+<form method="post" action = "/jobs/<%= @job.id %>/rooms">
+    <input type ="number" name = "length" placeholder="length in inches"> x 
+
+    <input type ="number" name = "width" placeholder="width in inches"> x 
+
+    <input type ="number" name = "height" placeholder="height in inches">
+
+    <input type="hidden" name = "job_id" value="<%= @job.id %>">
+
+    <input type="submit" name="submit" value="Submit">
+</form>
+<form method="get" action="/jobs/<%= @job.id %>">
+    <input type="submit" name="cancel" value="Cancel">
+</form>
+<h3>Current Rooms:<h3>
+<% if @job.rooms != []%>
+<% @job.rooms.each do |room|%>
+    <p> <%= room.length %> x <%= room.width %> x <%= room.height %> </p>
+<% end %>
+<% else %>
+    <h5>No rooms have been added</h5>
+    <h5>Please enter dimensions above</h5>
+<% end %>

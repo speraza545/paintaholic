@@ -4,8 +4,7 @@ class UserController < ApplicationController
     end
 
     post "/signup" do 
-        user = User.new(name: params[:name], email: params[:email], phone_number: params[:phone_number], address: params[:address], password: params[:password])
-        user.save
+        user = User.new(params)
         if user.save
             session[:user_id] = user.id
             redirect "/jobs"

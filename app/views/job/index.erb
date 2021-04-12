@@ -1,6 +1,7 @@
 <h1> Welcome <%= @user.name %></h1>
 <% if @user.jobs != [] %>
 <h2> Here are all the jobs we found for you </h2>
+<h4><a href="/jobs/new">Please Click Here To Create a New Job</a></h4>
     <% @user.jobs.each do |job| %>
         <p><a href="/jobs/<%= job.id %>"> <%= job.date %></a> </p>
     <% end %>

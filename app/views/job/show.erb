@@ -1,0 +1,44 @@
+<h1> Job Details </h1>
+<div>
+<h4> Date of Service:</h4>
+<p><%= @job.date %> </p>
+<h4>Time of Service</h4>
+<p><%= @job.time %> </p>
+<h4> Name: </h4>
+<p><%= @job.name %> </p>
+<h4> Email: </h4>
+<p><%= @job.email %> </p>
+<h4> Phone Number: </h4>
+<p><%= @job.phone_number %> </p>
+<h4> Address: </h4>
+<p><%= @job.address %> </p>
+<h4>Behr Premium Paint?:</h4>
+<p>
+<% if @job.behr_premium%>
+    Yes
+<% else  %> 
+    No
+<% end %>
+</p>
+
+<h3> Rooms: </h3>
+<% if @job.rooms != []%>
+<% @job.rooms.each do |room|%>
+    <p> <%= room.length %> x <%= room.width %> x <%= room.height %> </p>
+<% end %>
+<% else %>
+    <h5>No rooms have been added</h5>
+    <form method = "get" action="/jobs/<%= @job.id %>/rooms">
+        <input type="submit" name = "submit" value="Click Here to Add Rooms">
+    </form>
+<% end %>
+</div>
+<h3>Estimate:</h3>
+<% if @job.rooms != []%>
+    
+<% else %>
+    <h5>No rooms have been added</h5>
+    <form method = "get" action="/jobs/<%= @job.id %>/rooms">
+        <input type="submit" name = "submit" value="Click Here to Add Rooms">
+    </form>
+<% end %>

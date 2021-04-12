@@ -1,3 +1,3 @@
 class Room < ActiveRecord::Base
-    has_many :users, through: :jobs
+    belongs_to :job
 end

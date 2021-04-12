@@ -1,5 +1,5 @@
 class Job < ActiveRecord::Base
-    belongs_to :rooms
+    has_many :rooms
     belongs_to :users
     has_many :estimates
 end

@@ -7,4 +7,8 @@ class JobController < ApplicationController
             redirect "/login"
         end
     end
+
+    get "/jobs/new" do 
+        erb :"job/create_job"
+    end
 end

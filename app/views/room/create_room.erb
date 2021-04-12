@@ -19,8 +19,8 @@
 </form>
 <h3>Current Rooms:<h3>
 <% if @job.rooms != []%>
-<% @job.rooms.each do |room|%>
-    <p>Room <%= room.id%>:</p>
+<% @job.rooms.each_with_index do |room, index|%>
+    <p>Room <%= index+1 %>:</p>
     <p> <%= room.length %> inches x <%= room.width %> inches x <%= room.height %> inches </p>
 <% end %>
 <% else %>

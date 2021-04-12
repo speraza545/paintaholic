@@ -62,4 +62,24 @@ class JobController < ApplicationController
         redirect "/jobs/#{params[:id]}"
     end
 
+    delete "/jobs/:id/delete" do
+    job = Job.find(params[:id])
+    rooms = Room.where(job_id: job.id)
+    if logged_in? && job.user_id == current_user.id
+        if rooms != nil
+            rooms.each do |room|
+                room.delete
+            end
+            job.delete 
+            redirect "/jobs"
+        else 
+            job.delete 
+            redirect "/jobs"
+        end
+    else
+        redirect "/login"
+    end
+    end
+
+
 end

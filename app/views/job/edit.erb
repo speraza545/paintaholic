@@ -20,7 +20,7 @@
 </p>
 <p>
     <label for="behr_premium">Would you like to use Behr Premium Paint?</label></br>
-    <input type= "checkbox" <%= "checked" if @job.behr_premium == true %>name = "behr_premium" value="Yes">
+    <input type= "checkbox" name = "behr_premium" value="Yes" <%= "checked" if @job.behr_premium == true %>>
 </p>
     <input type="hidden" name = "user_id" value="<%= @user.id %>">
 <p>

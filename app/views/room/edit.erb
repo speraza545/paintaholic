@@ -1,3 +1,4 @@
+<h1> Room:</h1>
 <form method="post" action = "/jobs/<%= @job.id %>/rooms/<%= @room.id %>">
     <input type="hidden" name="_method" value="patch">
     <input type ="number" name = "length" placeholder="length in inches" value="<%= @room.length %>"> x 

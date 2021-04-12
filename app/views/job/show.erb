@@ -12,7 +12,10 @@
     <% time_seconds = time[2] %>
     <%= "#{time_hours.to_s}:#{time_minutes} pm" %>
 <% else %>
-    <%= @job.time.to_s.split(" ")[1] %> am
+    <% time = @job.time.to_s.split(" ")[1].split(":") %>
+    <% time_hours = time[0] %>
+    <% time_minutes = time[1] %>    
+    <%= "#{time_hours}:#{time_minutes} am" %>
 <% end %>
 </p>
 <h4> Name: </h4>
@@ -31,20 +34,28 @@
     No
 <% end %>
 <form method="get" action="/jobs/<%= @job.id %>/edit">
-<button type = "submit">Edit</button>
+<button type = "submit">Edit Job</button>
+</form>
+</br>
+<form method="post" action="/jobs/<%= @job.id %>/delete">
+<input type="hidden" name="_method" value ="delete">
+<button type = "submit">Delete Job</button>
 </form>
 </p>
 
 <h3> Rooms: </h3>
 <% if @job.rooms != []%>
-<% @job.rooms.each do |room|%>
-    <h4>Room <%= room.id %>: </h4>
+<% @job.rooms.each_with_index do |room, index|%>
+    <h4>Room <%= index+1 %>: </h4>
     <p> <%= room.length %> inches x <%= room.width %> x inches <%= room.height %> inches </p>
     <form method="get" action="/jobs/<%= @job.id%>/rooms/<%= room.id %>/edit">
-        <button type = "submit">Edit</button>
+        <button type = "submit">Edit Room <%= index+1 %></button>
     </form>
 </br>
 <% end %>
+<form method = "get" action="/jobs/<%= @job.id %>/rooms">
+<input type="submit" name = "submit" value="Add Room">
+</form>
 <% else %>
     <h5>No rooms have been added</h5>
     <form method = "get" action="/jobs/<%= @job.id %>/rooms">

@@ -3,7 +3,18 @@
 <h4> Date of Service:</h4>
 <p><%= @job.date %> </p>
 <h4>Time of Service</h4>
-<p><%= @job.time %> </p>
+<p>
+
+<%if @job.time.to_s.split(" ")[1].split(":")[0].to_i > 12%>
+    <% time = @job.time.to_s.split(" ")[1].split(":") %>
+    <% time_hours = time[0].to_i - 12 %>
+    <% time_minutes = time[1] %>
+    <% time_seconds = time[2] %>
+    <%= "#{time_hours.to_s}:#{time_minutes} pm" %>
+<% else %>
+    <%= @job.time.to_s.split(" ")[1] %> am
+<% end %>
+</p>
 <h4> Name: </h4>
 <p><%= @job.name %> </p>
 <h4> Email: </h4>
@@ -19,12 +30,20 @@
 <% else  %> 
     No
 <% end %>
+<form method="get" action="/jobs/<%= @job.id %>/edit">
+<button type = "submit">Edit</button>
+</form>
 </p>
 
 <h3> Rooms: </h3>
 <% if @job.rooms != []%>
 <% @job.rooms.each do |room|%>
-    <p> <%= room.length %> x <%= room.width %> x <%= room.height %> </p>
+    <h4>Room <%= room.id %>: </h4>
+    <p> <%= room.length %> inches x <%= room.width %> x inches <%= room.height %> inches </p>
+    <form method="get" action="/jobs/<%= @job.id%>/rooms/<%= room.id %>/edit">
+        <button type = "submit">Edit</button>
+    </form>
+</br>
 <% end %>
 <% else %>
     <h5>No rooms have been added</h5>

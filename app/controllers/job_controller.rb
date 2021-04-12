@@ -41,5 +41,25 @@ class JobController < ApplicationController
         end
     end 
 
+    get "/jobs/:id/edit" do 
+        if logged_in?
+            @job = Job.find(params[:id])
+            @user = User.find(@job.user_id)
+            erb :"/job/edit"
+        else
+            redirect "/login"
+        end
+    end
+
+    patch "/jobs/:id" do
+        if params[:behr_premium] == nil
+            premium_paint = false
+        else
+            premium_paint = params[:behr_premium]
+        end
+        @job = Job.find(params[:id])
+        @job.update(name: params[:name], email: params[:email], phone_number: params[:phone_number], address: params[:address], behr_premium: premium_paint, date: params[:date], time: params[:time])
+        redirect "/jobs/#{params[:id]}"
+    end
 
 end

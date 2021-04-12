@@ -1,0 +1,13 @@
+<form method="post" action = "/jobs/<%= @job.id %>/rooms/<%= @room.id %>">
+    <input type="hidden" name="_method" value="patch">
+    <input type ="number" name = "length" placeholder="length in inches" value="<%= @room.length %>"> x 
+
+    <input type ="number" name = "width" placeholder="width in inches" value="<%= @room.width %>"> x 
+
+    <input type ="number" name = "height" placeholder="height in inches" value="<%= @room.height %>">
+
+    <input type="hidden" name = "job_id" value="<%= @job.id %>">
+    <p>
+    <input type="submit" name="submit" value="Submit">
+    </p>
+</form>

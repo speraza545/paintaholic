@@ -1,0 +1,35 @@
+<h1>Please Enter the details below to edit this job:<h1>
+
+<form method = "post" action = "/jobs/<%= @job.id %>">
+<input type = "hidden" name="_method" value = "patch">
+<p>
+    <label for="name">Name:</label></br>    
+    <input type = "text" name = "name" value = "<%= @user.name %>">
+</p>
+<p>
+    <label for="email">Email:</label></br>
+    <input type = "text" name = "email" value = "<%= @user.email %>">
+</p>
+<p>
+    <label for="phone_number">Phone Number:</label></br>
+    <input type = "text" name = "phone_number" value = "<%= @user.phone_number %>">
+</p>
+<p>
+    <label for="address">Address:</label></br>
+    <input type = "text" name = "address" value = "<%= @user.address %>">
+</p>
+<p>
+    <label for="behr_premium">Would you like to use Behr Premium Paint?</label></br>
+    <input type= "checkbox" <%= "checked" if @job.behr_premium == true %>name = "behr_premium" value="Yes">
+</p>
+    <input type="hidden" name = "user_id" value="<%= @user.id %>">
+<p>
+    <label for="date">Please select a date for service</label></br>
+    <input type = "date" name = "date" value = <%= @job.date %>>
+</p>
+<p>
+    <label for="time">Please select a start time between 9 am and 6 pm</label></br>
+    <input type = "time" name = "time" value = <%= @job.time.to_s.split(" ")[1] %> min="09:00" max="18:00" required>
+</p>
+    <input type = "submit" name="submit" value="Submit">
+</form>

@@ -10,8 +10,9 @@
     <input type ="number" name = "height" placeholder="height in inches">
 
     <input type="hidden" name = "job_id" value="<%= @job.id %>">
-
+    <p>
     <input type="submit" name="submit" value="Submit">
+    </p>
 </form>
 <form method="get" action="/jobs/<%= @job.id %>">
     <input type="submit" name="cancel" value="Cancel">
@@ -19,7 +20,8 @@
 <h3>Current Rooms:<h3>
 <% if @job.rooms != []%>
 <% @job.rooms.each do |room|%>
-    <p> <%= room.length %> x <%= room.width %> x <%= room.height %> </p>
+    <p>Room <%= room.id%>:</p>
+    <p> <%= room.length %> inches x <%= room.width %> inches x <%= room.height %> inches </p>
 <% end %>
 <% else %>
     <h5>No rooms have been added</h5>

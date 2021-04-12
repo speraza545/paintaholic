@@ -6,6 +6,8 @@ class CreateJob < ActiveRecord::Migration[5.2]
       t.string :phone_number
       t.string :address
       t.boolean :behr_premium
+      t.integer :room_id
+      t.integer :user_id
       t.date :date 
       t.time :time
     end

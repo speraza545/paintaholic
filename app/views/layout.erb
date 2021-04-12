@@ -15,7 +15,18 @@
   </head>
   <body>
     <div class="wrapper">
-
+        <%if logged_in?%>
+        <form method="get" action="/logout">
+            <button type = "submit">Logout</button>
+        </form>
+        <% else %>
+          <form method="get" action="/signup">
+            <button type="submit">Sign up</button>
+          </form>
+          <form method="get" action="/login">
+            <button>Login</button>
+          </form>
+        <% end %>
         <%= yield %>
 
       <footer class="branding">

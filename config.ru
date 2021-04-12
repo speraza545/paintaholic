@@ -6,3 +6,7 @@ end
 
 use Rack::MethodOverride
 run ApplicationController
+use JobController
+use EstimateController
+use UserController
+use RoomController

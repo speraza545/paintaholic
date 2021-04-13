@@ -52,10 +52,16 @@
         <button type = "submit">Edit Room <%= index+1 %></button>
     </form>
 </br>
+<form method = "post" action="/jobs/<%= @job.id %>/rooms/<%= room.id %>">
+    <input type = "hidden" name = "_method" value = "delete">
+    <input type="submit" name = "submit" value="Delete Room">
+</form>
+</br>
 <% end %>
 <form method = "get" action="/jobs/<%= @job.id %>/rooms">
 <input type="submit" name = "submit" value="Add Room">
 </form>
+</br>
 <% else %>
     <h5>No rooms have been added</h5>
     <form method = "get" action="/jobs/<%= @job.id %>/rooms">
@@ -65,7 +71,23 @@
 </div>
 <h3>Estimate:</h3>
 <% if @job.rooms != []%>
-    
+    <% surface_area = Estimate.surface_area(@job.id) %>
+    <h4>Material Cost:</h4>
+    <% material_cost = Estimate.material_cost(@job.behr_premium, surface_area).round(2) %>
+    <%= "$#{material_cost}" %>
+    </br>
+    <h4> Labor Costs: </h4>
+    <h5>Labor costs are $65 per hour on weekdays, $80 per hour weekends </h5>
+    <% labor_cost = 0 %>
+    <% if @job.date.strftime("%A").downcase == "saturday" || @job.date.strftime("%A").downcase == "sunday"%>
+        <% labor_cost = Estimate.labor_cost(surface_area, 80).round(2) %>
+    <% else %>
+        <% labor_cost = Estimate.labor_cost(surface_area, 65).round(2) %>
+    <% end %>
+    <%= "$#{labor_cost}" %>
+    </br>
+    <h4>Total Estimate:</h4>
+    <%= "$#{(labor_cost + material_cost).round(2)}" %>
 <% else %>
     <h5>No rooms have been added</h5>
     <form method = "get" action="/jobs/<%= @job.id %>/rooms">

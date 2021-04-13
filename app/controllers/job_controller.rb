@@ -42,8 +42,8 @@ class JobController < ApplicationController
     end 
 
     get "/jobs/:id/edit" do 
-        if logged_in?
-            @job = Job.find(params[:id])
+        @job = Job.find(params[:id])
+        if logged_in? && @job.user_id == current_user.id
             @user = User.find(@job.user_id)
             erb :"/job/edit"
         else
@@ -58,8 +58,12 @@ class JobController < ApplicationController
             premium_paint = params[:behr_premium]
         end
         @job = Job.find(params[:id])
+        if logged_in? && @job.user_id == current_user.id
         @job.update(name: params[:name], email: params[:email], phone_number: params[:phone_number], address: params[:address], behr_premium: premium_paint, date: params[:date], time: params[:time])
         redirect "/jobs/#{params[:id]}"
+        else 
+            redirect "/login"
+        end
     end
 
     delete "/jobs/:id/delete" do

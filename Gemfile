@@ -12,6 +12,7 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'faker'
+gem 'bootstrap', '~> 5.0.0.beta2'
 
 group :test do
   gem 'rspec'

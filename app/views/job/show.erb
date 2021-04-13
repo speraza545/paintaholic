@@ -1,96 +1,131 @@
-<h1> Job Details </h1>
-<div>
-<h4> Date of Service:</h4>
-<p><%= @job.date %> </p>
-<h4>Time of Service</h4>
-<p>
-
-<%if @job.time.to_s.split(" ")[1].split(":")[0].to_i > 12%>
-    <% time = @job.time.to_s.split(" ")[1].split(":") %>
-    <% time_hours = time[0].to_i - 12 %>
-    <% time_minutes = time[1] %>
-    <% time_seconds = time[2] %>
-    <%= "#{time_hours.to_s}:#{time_minutes} pm" %>
-<% else %>
-    <% time = @job.time.to_s.split(" ")[1].split(":") %>
-    <% time_hours = time[0] %>
-    <% time_minutes = time[1] %>    
-    <%= "#{time_hours}:#{time_minutes} am" %>
-<% end %>
-</p>
-<h4> Name: </h4>
-<p><%= @job.name %> </p>
-<h4> Email: </h4>
-<p><%= @job.email %> </p>
-<h4> Phone Number: </h4>
-<p><%= @job.phone_number %> </p>
-<h4> Address: </h4>
-<p><%= @job.address %> </p>
-<h4>Behr Premium Paint?:</h4>
-<p>
-<% if @job.behr_premium%>
-    Yes
-<% else  %> 
-    No
-<% end %>
-<form method="get" action="/jobs/<%= @job.id %>/edit">
-<button type = "submit">Edit Job</button>
-</form>
-</br>
-<form method="post" action="/jobs/<%= @job.id %>/delete">
-<input type="hidden" name="_method" value ="delete">
-<button type = "submit">Delete Job</button>
-</form>
-</p>
-
-<h3> Rooms: </h3>
-<% if @job.rooms != []%>
-<% @job.rooms.each_with_index do |room, index|%>
-    <h4>Room <%= index+1 %>: </h4>
-    <p> <%= room.length %> inches x <%= room.width %> x inches <%= room.height %> inches </p>
-    <form method="get" action="/jobs/<%= @job.id%>/rooms/<%= room.id %>/edit">
-        <button type = "submit">Edit Room <%= index+1 %></button>
-    </form>
-</br>
-<form method = "post" action="/jobs/<%= @job.id %>/rooms/<%= room.id %>">
-    <input type = "hidden" name = "_method" value = "delete">
-    <input type="submit" name = "submit" value="Delete Room">
-</form>
-</br>
-<% end %>
-<form method = "get" action="/jobs/<%= @job.id %>/rooms">
-<input type="submit" name = "submit" value="Add Room">
-</form>
-</br>
-<% else %>
-    <h5>No rooms have been added</h5>
-    <form method = "get" action="/jobs/<%= @job.id %>/rooms">
-        <input type="submit" name = "submit" value="Click Here to Add Rooms">
-    </form>
-<% end %>
-</div>
-<h3>Estimate:</h3>
-<% if @job.rooms != []%>
-    <% surface_area = Estimate.surface_area(@job.id) %>
-    <h4>Material Cost:</h4>
-    <% material_cost = Estimate.material_cost(@job.behr_premium, surface_area).round(2) %>
-    <%= "$#{material_cost}" %>
-    </br>
-    <h4> Labor Costs: </h4>
-    <h5>Labor costs are $65 per hour on weekdays, $80 per hour weekends </h5>
-    <% labor_cost = 0 %>
-    <% if @job.date.strftime("%A").downcase == "saturday" || @job.date.strftime("%A").downcase == "sunday"%>
-        <% labor_cost = Estimate.labor_cost(surface_area, 80).round(2) %>
+<div class="job-wrapper">
+    <div class="card-wrapper">
+        <h2> Job Details: </h2>
+    </div>
+    <div class="card-wrapper">
+        <h4 class="title"> Date of Service:</h4>
+        <p><%= @job.date %> </p>
+    </div>  
+    <div class="card-wrapper">
+        <h4 class="title">Time of Service</h4>
+        <p>
+        <%if @job.time.to_s.split(" ")[1].split(":")[0].to_i > 12%>
+            <% time = @job.time.to_s.split(" ")[1].split(":") %>
+            <% time_hours = time[0].to_i - 12 %>
+            <% time_minutes = time[1] %>
+            <% time_seconds = time[2] %>
+            <%= "#{time_hours.to_s}:#{time_minutes} pm" %>
+        <% else %>
+            <% time = @job.time.to_s.split(" ")[1].split(":") %>
+            <% time_hours = time[0] %>
+            <% time_minutes = time[1] %>    
+            <%= "#{time_hours}:#{time_minutes} am" %>
+        <% end %>
+        </p>
+    </div>
+    <div class="card-wrapper">
+        <h4 class="title"> Name: </h4>
+        <p><%= @job.name %> </p>
+    </div>
+    <div class="card-wrapper">
+        <h4 class="title"> Email: </h4>
+        <p><%= @job.email %> </p>
+    </div>
+    <div class="card-wrapper">
+        <h4 class="title"> Phone Number: </h4>
+        <p><%= @job.phone_number %> </p>
+    </div>
+    <div class="card-wrapper">
+        <h4 class="title"> Address: </h4>
+        <p><%= @job.address %> </p>
+    </div>
+    <div class="card-wrapper">
+        <h4 class="title">Behr Premium Paint?:</h4>
+        <p>
+        <% if @job.behr_premium%>
+            Yes
+        <% else  %> 
+            No
+        <% end %>
+        </p>
+    </div>
+    <div class = "card-wrapper">
+        </br>
+        <form method="get" action="/jobs/<%= @job.id %>/edit">
+        <button type = "submit">Edit Job</button>
+        </form>
+        </br>
+        <form method="post" action="/jobs/<%= @job.id %>/delete">
+        <input type="hidden" name="_method" value ="delete">
+        <button type = "submit">Delete Job</button>
+        </form>
+        </br>
+    </div>
+    <div class="card-wrapper">
+        <h2> Rooms: </h2>
+    </div>
+    <% if @job.rooms != []%>
+        <% @job.rooms.each_with_index do |room, index|%>
+            <div class = "card-wrapper">
+                <h4>Room <%= index+1 %>: </h4>
+                <p> Length:<%= room.length %>"</br>Width:<%= room.width %>"</br>Height:<%= room.height %>"</p>
+                <form method="get" action="/jobs/<%= @job.id%>/rooms/<%= room.id %>/edit">
+                    <button type = "submit">Edit Room <%= index+1 %></button>
+                </form>
+                </br>
+                <form method = "post" action="/jobs/<%= @job.id %>/rooms/<%= room.id %>">
+                    <input type = "hidden" name = "_method" value = "delete">
+                    <input type="submit" name = "submit" value="Delete Room">
+                </form>
+                </br>
+            </div>
+        <% end %>
+        <div class="card-wrapper">
+        </br>
+        <form method = "get" action="/jobs/<%= @job.id %>/rooms">
+        <input type="submit" name = "submit" value="Add Room">
+        </form>
+        </br>
+        </div>
+        <% else %>
+            <h5>No rooms have been added</h5>
+            <form method = "get" action="/jobs/<%= @job.id %>/rooms">
+                <input type="submit" name = "submit" value="Click Here to Add Rooms">
+            </form>
+        <% end %>
+    <div class="card-wrapper">
+        <h3>Estimate:</h3>
+    </div>
+    <% if @job.rooms != []%>
+        <% surface_area = Estimate.surface_area(@job.id) %>
+        <div class="card-wrapper">
+            <h4>Material Cost:</h4>
+            <% material_cost = Estimate.material_cost(@job.behr_premium, surface_area).round(2) %>
+            <%= "$#{material_cost}" %>
+            </br>
+        </div>
+        <div class="card-wrapper">
+            <h4> Labor Costs: </h4>
+            <h5>$65 per hr Mon-Fri</br>$80 per hr Sat-Sun</h5>
+            <% labor_cost = 0 %>
+            <% if @job.date.strftime("%A").downcase == "saturday" || @job.date.strftime("%A").downcase == "sunday"%>
+                <% labor_cost = Estimate.labor_cost(surface_area, 80).round(2) %>
+            <% else %>
+                <% labor_cost = Estimate.labor_cost(surface_area, 65).round(2) %>
+            <% end %>
+            <%= "$#{labor_cost}" %>
+            </br>
+        </div>
+        <div class="card-wrapper">
+        <h4>Total Estimate:</h4>
+            <%= "$#{(labor_cost + material_cost).round(2)}" %>
+        </div>
     <% else %>
-        <% labor_cost = Estimate.labor_cost(surface_area, 65).round(2) %>
+        <div class="card-wrapper">
+            <h5>No rooms have been added</h5>
+            <form method = "get" action="/jobs/<%= @job.id %>/rooms">
+                <input type="submit" name = "submit" value="Click Here to Add Rooms">
+            </form>
+        </div>
     <% end %>
-    <%= "$#{labor_cost}" %>
-    </br>
-    <h4>Total Estimate:</h4>
-    <%= "$#{(labor_cost + material_cost).round(2)}" %>
-<% else %>
-    <h5>No rooms have been added</h5>
-    <form method = "get" action="/jobs/<%= @job.id %>/rooms">
-        <input type="submit" name = "submit" value="Click Here to Add Rooms">
-    </form>
-<% end %>
+</div>

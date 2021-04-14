@@ -1,27 +1,31 @@
-<h1>Please enter your room's details in inches</h1>
-<p>If you would like to add more than one room to your job, please just submit the room, and another form will appear.</p>
-<p>When you are done adding rooms just hit cancel</p>
+<div class="job-wrapper">
+    <h1>Please enter your room's details in inches</h1>
+    <p>If you would like to add more than one room to your job, please just add the room, and the form will reset</p>
+    <p>When you are done adding rooms just hit "view job"</p>
 
-<form method="post" action = "/jobs/<%= @job.id %>/rooms">
-    <input type ="number" name = "length" placeholder="length in inches"> x 
+    <form method="post" action = "/jobs/<%= @job.id %>/rooms">
+        <input type ="number" name = "length" placeholder="length in inches"> x 
 
-    <input type ="number" name = "width" placeholder="width in inches"> x 
+        <input type ="number" name = "width" placeholder="width in inches"> x 
 
-    <input type ="number" name = "height" placeholder="height in inches">
+        <input type ="number" name = "height" placeholder="height in inches">
 
-    <input type="hidden" name = "job_id" value="<%= @job.id %>">
-    <p>
-    <input type="submit" name="submit" value="Add Room">
-    </p>
-</form>
-<form method="get" action="/jobs/<%= @job.id %>">
-    <input type="submit" name="submit" value="View Job">
-</form>
-<h3>Current Rooms:<h3>
+        <input type="hidden" name = "job_id" value="<%= @job.id %>">
+        <input type="submit" name="submit" value="Add Room">
+    </form>
+    <form method="get" action="/jobs/<%= @job.id %>">
+        <input type="submit" name="submit" value="View Job">
+    </form>
+</div>
+<div class = "card-wrapper">
+    <h3>Current Rooms:<h3>
+</div>
 <% if @job.rooms != []%>
 <% @job.rooms.each_with_index do |room, index|%>
-    <p>Room <%= index+1 %>:</p>
-    <p> <%= room.length %> inches x <%= room.width %> inches x <%= room.height %> inches </p>
+    <div class="card-wrapper">
+        <h3>Room <%= index+1 %>:</h3>
+        <p> Length: <%= room.length %>"</br>Width: <%= room.width %>"</br>Height: <%= room.height %>"</p>
+    </div>
 <% end %>
 <% else %>
     <h5>No rooms have been added</h5>

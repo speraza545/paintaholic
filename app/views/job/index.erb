@@ -1,10 +1,15 @@
+<div class = "job-wrapper">
 <h1> Welcome <%= @user.name %></h1>
 <% if @user.jobs != [] %>
-<h2> Here are all the jobs we found for you </h2>
-<h4><a href="/jobs/new">Please Click Here To Create a New Job</a></h4>
+<h2> Here are all the jobs we found for you! </h2>
+<a href="/jobs/new"><button>New Job</button></a>
+</br>
+</br>
     <% @user.jobs.each do |job| %>
-        <p><a href="/jobs/<%= job.id %>"> <%= job.date %></a> </p>
+        <a href="/jobs/<%= job.id %>"> <button class="jobs"><%= job.date %></button></a>
     <% end %>
 <% else %>
-    <h3><a href="/jobs/new">Please Click Here To Create a New Job</a></h3>
+<h2> No Jobs Found! </h2>
+<a href="/jobs/new"><button>New Job</button></a>
 <% end %>
+</div>

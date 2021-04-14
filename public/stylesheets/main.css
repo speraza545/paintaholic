@@ -13,7 +13,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: rgb(255, 254, 182);
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
@@ -84,6 +84,7 @@
     font-size: 18px;
     line-height: 24px;
   }
+
 }
 
 
@@ -92,6 +93,7 @@
   margin: 0;
   padding: 0;
   width: 200px;
+  margin-left: 80%;
 }
 
 .navbar-li a {
@@ -103,8 +105,8 @@
 }
 
 .navbar-li a:hover {
-  background-color: #555;
-  color: rgb(255, 255, 255);
+  background-color: rgb(227, 231, 0);
+  color: rgb(5, 5, 5);
 }
 
 .navbar-li {
@@ -120,7 +122,7 @@ div {
 
 .card-wrapper {
   background-color: rgb(236, 236, 236);
-  width: 200px;
+  width: 150px;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -131,9 +133,9 @@ div {
 }
 
 button {
-  background-color: #4b4b4b; /* Green */
+  background-color:rgb(227, 231, 0);
+  color: rgb(5, 5, 5);
   border: none;
-  color: white;
   padding: 8px 8px;
   text-align: center;
   text-decoration: none;
@@ -142,23 +144,72 @@ button {
   width: 83px;
 }
 
+button:hover {
+  background-color:rgb(151, 151, 151);
+  color: rgb(255, 255, 255);
+}
+
 input[name=submit] {
-  background-color: #4b4b4b; /* Green */
+  background-color:rgb(227, 231, 0);
+  color: rgb(5, 5, 5);
   border: none;
-  color: white;
   padding: 8px 8px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
   width: 83px;
+}
+
+input[name=submit]:hover {
+  background-color:rgb(151, 151, 151);
+  color: rgb(255, 255, 255);
 }
 
 .job-wrapper {
   width: 100%;
   text-align: center;
+  margin: 0, auto;
 }
 
 .heading{
   margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.float-child {
+  width: 33.33%;
+  float: left;
+  margin-left: auto;
+  margin-right: auto;
+} 
+
+.welcome-text {
+  text-align: center;
+}
+
+.welcome-photo {
+  width: 50%;
+}
+
+button[class=jobs] {
+  background-color: #d4d4d4; /* Green */
+  border: none;
+  color: rgb(54, 54, 54);
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  width: 83px;
+}
+
+button[class=jobs]:hover {
+  background-color:rgb(151, 151, 151);
+  color: rgb(255, 255, 255);
+}
+
+header {
+  margin-left: 90px;
 }

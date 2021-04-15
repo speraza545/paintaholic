@@ -90,10 +90,9 @@
 
 .navbar {
   list-style-type: none;
-  margin: 0;
   padding: 0;
   width: 200px;
-  margin-left: 80%;
+  display: inline;
 }
 
 .navbar-li a {
@@ -130,6 +129,22 @@ div {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 5px;
+}
+
+.create-job-wrapper {
+  background-color: rgb(236, 236, 236);
+  width: 200px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 25px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 5px;
 }
 
 button {
@@ -142,6 +157,7 @@ button {
   display: inline-block;
   font-size: 12px;
   width: 83px;
+  border-radius: 5px;
 }
 
 button:hover {
@@ -159,6 +175,7 @@ input[name=submit] {
   display: inline-block;
   font-size: 12px;
   width: 83px;
+  border-radius: 5px;
 }
 
 input[name=submit]:hover {

@@ -1,0 +1,30 @@
+<form method = "post" action = "/user/<%= @user.id %>">
+<input type = "hidden" name="_method" value = "patch">
+<div class="create-job-wrapper">
+<p>
+    <h5>Name:</h5>    
+    <input type = "text" name = "name" value = "<%= @user.name %>" required>
+</p>
+</div>
+<div class="create-job-wrapper">
+<p>
+    <h5>Email:</h5>
+    <input type = "text" name = "email" value = "<%= @user.email %>" required>
+</p>
+</div>
+<div class="create-job-wrapper">
+<p>
+    <h5>Phone Number:</h5>
+    <input type = "text" name = "phone_number" value = "<%= @user.phone_number %>" required>
+</p>
+</div>
+<div class="create-job-wrapper">
+<p>
+    <h5>Address:</h5>
+    <input type = "text" name = "address" value = "<%= @user.address %>" required>
+</p>
+</div>
+<div class="create-job-wrapper">
+    <input type = "submit" name="submit" value="Submit">
+</br>
+</form>

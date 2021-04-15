@@ -1,34 +1,57 @@
-<h1>Please Enter the details below to create a new job<h1>
+<div class="job-wrapper">
+</br>
+<h1>Please Enter the details below<h1>
 
 <form method = "post" action = "/jobs">
+<div class="create-job-wrapper">
 <p>
-    <label for="name">Name:</label></br>    
-    <input type = "text" name = "name" value = "<%= @user.name %>">
+    <h5>Name:</h5> 
+    <input type = "text" name = "name" value = "<%= @user.name %>" required>
 </p>
+</div>
+<div class="create-job-wrapper">
 <p>
-    <label for="email">Email:</label></br>
-    <input type = "text" name = "email" value = "<%= @user.email %>">
+    <h5>Email:</h5>
+    <input type = "text" name = "email" value = "<%= @user.email %>" required>
 </p>
+</div>
+<div class="create-job-wrapper">
 <p>
-    <label for="phone_number">Phone Number:</label></br>
-    <input type = "text" name = "phone_number" value = "<%= @user.phone_number %>">
+    <h5>Phone #:</h5>
+    <input type = "text" name = "phone_number" value = "<%= @user.phone_number %>" required>
 </p>
+</div>
+<div class="create-job-wrapper">
 <p>
-    <label for="address">Address:</label></br>
-    <input type = "text" name = "address" value = "<%= @user.address %>">
+    <h5>Address:</h5>
+    <input type = "text" name = "address" value = "<%= @user.address %>" required>
 </p>
+</div>
+<div class="create-job-wrapper">
 <p>
-    <label for="behr_premium">Would you like to use Behr Premium Paint?</label></br>
+    <h5>Add Behr Premium Paint?</h5>
     <input type= "checkbox" name = "behr_premium" value="Yes">
 </p>
+</div>
+<div class="create-job-wrapper">
     <input type="hidden" name = "user_id" value="<%= @user.id %>">
 <p>
-    <label for="date">Please select a date for service</label></br>
-    <input type = "date" name = "date">
+    <h5>Please select a date for service</h5>
+    <input type = "date" name = "date" required>
 </p>
+</div>
+<div class="create-job-wrapper">
 <p>
-    <label for="time">Please select a start time between 9 am and 6 pm</label></br>
+    <h5>Please select a start time between 9 am and 6 pm</h5>
     <input type = "time" name = "time" min="09:00" max="18:00" required>
 </p>
+</div>
+<div class="create-job-wrapper">
     <input type = "submit" name="submit" value="Submit">
 </form>
+</br>
+</div>
+<div class="create-job-wrapper">
+<a href="/jobs"><button>Cancel</button></a>
+</div>
+</div>

@@ -1,35 +1,55 @@
+<div class = "job-wrapper">
+</br>
 <h1>Please Enter the details below to edit this job:<h1>
 
 <form method = "post" action = "/jobs/<%= @job.id %>">
 <input type = "hidden" name="_method" value = "patch">
+<div class="create-job-wrapper">
 <p>
-    <label for="name">Name:</label></br>    
-    <input type = "text" name = "name" value = "<%= @user.name %>">
+    <h5>Name:</h5>    
+    <input type = "text" name = "name" value = "<%= @user.name %>" required>
 </p>
+</div>
+<div class="create-job-wrapper">
 <p>
-    <label for="email">Email:</label></br>
-    <input type = "text" name = "email" value = "<%= @user.email %>">
+    <h5>Email:</h5>
+    <input type = "text" name = "email" value = "<%= @user.email %>" required>
 </p>
+</div>
+<div class="create-job-wrapper">
 <p>
-    <label for="phone_number">Phone Number:</label></br>
-    <input type = "text" name = "phone_number" value = "<%= @user.phone_number %>">
+    <h5>Phone Number:</h5>
+    <input type = "text" name = "phone_number" value = "<%= @user.phone_number %>" required>
 </p>
+</div>
+<div class="create-job-wrapper">
 <p>
-    <label for="address">Address:</label></br>
-    <input type = "text" name = "address" value = "<%= @user.address %>">
+    <h5>Address:</h5>
+    <input type = "text" name = "address" value = "<%= @user.address %>" required>
 </p>
+</div>
+<div class="create-job-wrapper">
 <p>
-    <label for="behr_premium">Would you like to use Behr Premium Paint?</label></br>
+    <h5>Would you like to use Behr Premium Paint?</h5>
     <input type= "checkbox" name = "behr_premium" value="Yes" <%= "checked" if @job.behr_premium == true %>>
 </p>
-    <input type="hidden" name = "user_id" value="<%= @user.id %>">
+</div>
+<div class="create-job-wrapper">
+    <input type="hidden" name = "user_id" value="<%= @user.id %>" required>
 <p>
-    <label for="date">Please select a date for service</label></br>
+    <h5>Please select a date for service</h5>
     <input type = "date" name = "date" value = <%= @job.date %>>
 </p>
+</div>
+<div class="create-job-wrapper">
 <p>
-    <label for="time">Please select a start time between 9 am and 6 pm</label></br>
+    <h5>Please select a start time between 9 am and 6 pm</h5>
     <input type = "time" name = "time" value = <%= @job.time.to_s.split(" ")[1] %> min="09:00" max="18:00" required>
 </p>
+</div>
+<div class="create-job-wrapper">
     <input type = "submit" name="submit" value="Submit">
 </form>
+</br>
+</div>
+</div>

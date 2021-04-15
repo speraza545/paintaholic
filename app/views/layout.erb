@@ -27,6 +27,7 @@
           <ul class="navbar">
           <%if logged_in?%>
             <li class="navbar-li"><a href="/">Home</a></li>
+            <li class="navbar-li"><a href="/user/<%= current_user.id %>">My Account</a></li>
             <li class="navbar-li"><a href="/jobs">My Jobs</a></li>
             <li class="navbar-li"><a href="/logout">Logout</a></li>
           <% else %>

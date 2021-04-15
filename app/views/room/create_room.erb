@@ -1,14 +1,15 @@
 <div class="job-wrapper">
+    </br>
     <h1>Please enter your room's details in inches</h1>
     <p>If you would like to add more than one room to your job, please just add the room, and the form will reset</p>
     <p>When you are done adding rooms just hit "view job"</p>
 
     <form method="post" action = "/jobs/<%= @job.id %>/rooms">
-        <input type ="number" name = "length" placeholder="length in inches"> x 
+        <input type ="number" name = "length" placeholder="length in inches" required> x 
 
-        <input type ="number" name = "width" placeholder="width in inches"> x 
+        <input type ="number" name = "width" placeholder="width in inches" required> x 
 
-        <input type ="number" name = "height" placeholder="height in inches">
+        <input type ="number" name = "height" placeholder="height in inches" required>
 
         <input type="hidden" name = "job_id" value="<%= @job.id %>">
         <input type="submit" name="submit" value="Add Room">

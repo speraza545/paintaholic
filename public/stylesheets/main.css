@@ -190,6 +190,10 @@ input[name=submit]:hover {
   margin: 0, auto;
 }
 
+h1 {
+  text-align: center;
+}
+
 .heading{
   margin-bottom: 50px;
   margin-left: auto;

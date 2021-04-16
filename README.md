@@ -20,3 +20,9 @@ Any bugs or pull requests are welcome on [Github](https://github.com/speraza545/
 
 #### License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+#### Video Walkthrough:
+[Video Walkthrough](https://youtu.be/L0-xOm7EdtA)
+
+#### Blog Post:
+[Blog Post](https://scott-peraza.medium.com/paintaholic-project-for-flatiron-487088a33c57)

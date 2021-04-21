@@ -12,8 +12,9 @@ Currently the app allows users to pick a day and time for a job, enter in their 
 2) Clone the repo
 3) Open your terminal and CD into the program
 4) run bundle install
-5) run shotgun
-6) open a browser and navigate to http://localhost:9393/
+5) Run migrations
+6) run shotgun
+7) open a browser and navigate to http://localhost:9393/
 
 #### Contributing
 Any bugs or pull requests are welcome on [Github](https://github.com/speraza545/paintaholic). 
